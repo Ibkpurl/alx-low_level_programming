@@ -9,7 +9,7 @@
  */
 
 int main(void)
-{{
+{
 	int p, q;
 
 	for (p = 0; p <= 98; p++)
