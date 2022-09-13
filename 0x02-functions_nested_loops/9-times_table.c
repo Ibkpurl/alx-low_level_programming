@@ -1,8 +1,7 @@
 #include "main.h"
 
 /**
- * times_table -
- * prints the multiplication table of nine (9)
+ * times_table - prints the multiplication table of nine (9)
  * Return: void
  */
 void times_table(void)
