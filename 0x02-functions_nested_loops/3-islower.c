@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * print_alphabet function is uses _putchar function to print the alphabet
- * in lowercase ten times
+ * islower - checks for lowercase character
+ * 
  */
 
 int _islower(int c)
