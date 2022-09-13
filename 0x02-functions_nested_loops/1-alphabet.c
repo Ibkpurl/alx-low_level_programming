@@ -1,20 +1,16 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * main - check the code
- *
+ * main - prints the alphabet, in lowercase, followed by a new line
+ * 
  * Return: Always 0 (Success)
  */
-int main(void)
+
+void print_alphabet(void)
 {
-	char *sh = "Holberton";
+	char i;
 
-	while (*sh)
-	{
-		_putchar(*sh);
-		sh++;
-	}
+	for (i = 'a'; i <= 'z'; i++)
+		_putchar(i);
 	_putchar('\n');
-
-	return (0);
 }
