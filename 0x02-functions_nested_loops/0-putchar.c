@@ -1,11 +1,20 @@
-#include <unistd.h>
+#include "holberton.h"
 
 /**
  * main - check the code
  *
- * Return: Always 0.
+ * Return: Always 0 (Success)
  */
-int _putchar(char c)
+int main(void)
 {
-	return (write(1, &c, 1));
+	char *sh = "Holberton";
+
+	while (*sh)
+	{
+		_putchar(*sh);
+		sh++;
+	}
+	_putchar('\n');
+
+	return (0);
 }
