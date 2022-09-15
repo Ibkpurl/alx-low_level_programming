@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * print_numbers - a function that checks for a digit.
  *
