@@ -8,7 +8,7 @@
  * @j: second input
  * Return: multiplication result of the 2 inputs
  */
-int mul(int i, int j)
+int mul(int a, int b)
 {
-	return (i * j);
+	return (a * b);
 }
