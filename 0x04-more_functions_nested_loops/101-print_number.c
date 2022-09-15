@@ -18,18 +18,18 @@ void print_number(int n)
 		print_integer(n);
 }
 
-// /**
-//  * print_integer - A function to priting n
-//  * @m: an input unsigned integer
-//  * Return: Nothing
-//  */
-// void print_integer(int m)
-// {
-// 	int a = 1000000000;
+/**
+ * print_integer - A function to priting n
+ * @m: an input unsigned integer
+ * Return: Nothing
+ */
+void print_integer(int m)
+{
+	int a = 1000000000;
 
-// 	for (; a >= 1; a /= 10)
-// 		if (m / a != 0)
-// 		{
-// 			_putchar((m / a) % 10 + '0');
-// 		}
-// }
+	for (; a >= 1; a /= 10)
+		if (m / a != 0)
+		{
+			_putchar((m / a) % 10 + '0');
+		}
+}
