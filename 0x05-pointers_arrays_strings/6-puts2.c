@@ -2,7 +2,7 @@
 #include <stdio.h>
 
 /**
- * puts2 - is a function that prints every other character of a string,
+ * puts2 - is a function that print every other character of a string,
  * starting with the first character, followed by a new line.
  * @str: An input string
  * Return: Nothing
