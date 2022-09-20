@@ -2,40 +2,20 @@
 #include <stdio.h>
 
 /**
- * _strlen - returns the length of a given string
- * @s: string to check the length of
- * Return: returns the length of the string
+ * _strcpy - function that copy the string pointed to by src
+ * including the terminating null byte (\0),
+ * to the buffer pointed to by dest.
+ *
+ * @dest: A pointer to destination of string
+ * @src: A pointer to source string to copy from
+ *
+ * Return: pointer to dest
  */
-int _strlen(char *s)
+char *_strcpy(char *dest, char *src)
 {
-	int a;
+	char *lens = dest;
 
-	a = 0;
-	while (s[a] != '\0')
-		a++;
-	return (a);
+	while (*src)
+		*dest++ = *src++;
+	return (lens);
 }
-
-/**
- * rev_string - will reverse string in place, without printing it
- * @s: string to reverse
- * Return: void
- */
-void rev_string(char *s)
-{
-	int a, length;
-
-	char b, c;
-
-	length = _strlen(s) - 1;
-	a = 0;
-
-	while (a < length)
-	{
-		b = s[a];
-		c = s[length];
-		s[a++] = c;
-		s[length--] = b;
-	}
-}
-
