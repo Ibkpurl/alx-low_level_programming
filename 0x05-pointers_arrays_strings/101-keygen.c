@@ -1,41 +1,42 @@
 #include "main.h"
 #include <stdio.h>
+#include <time.h>
 
 /**
- * _strlen - returns the length of a given string
- * @s: string to check the length of
- * Return: returns the length of the string
+ * main - random password generator for 101-crackme
+ *
+ * Return: always 0
  */
-int _strlen(char *s)
+int main(void)
 {
-	int a;
+	int i, j, k, s;
+	char c[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	char p[58];
 
-	a = 0;
-	while (s[a] != '\0')
-		a++;
-	return (a);
-}
-
-/**
- * rev_string - will reverse string in place, without printing it
- * @s: string to reverse
- * Return: void
- */
-void rev_string(char *s)
-{
-	int a, length;
-
-	char b, c;
-
-	length = _strlen(s) - 1;
-	a = 0;
-
-	while (a < length)
+	srand(time(NULL));
+	while (s != 2772)
 	{
-		b = s[a];
-		c = s[length];
-		s[a++] = c;
-		s[length--] = b;
+		i = k = s = 0;
+		while ((2772 - 122) > s)
+		{
+			j = rand() % 62;
+			p[i] = c[j];
+			s += c[j];
+			i++;
+		}
+		while (c[k])
+		{
+			if (c[k] == (2772 - s))
+			{
+				p[i] = c[k];
+				s += c[k];
+				i++;
+				break;
+			}
+			k++;
+		}
 	}
+	p[i] = '\0';
+	printf("%s", p);
+	return (0);
 }
-
