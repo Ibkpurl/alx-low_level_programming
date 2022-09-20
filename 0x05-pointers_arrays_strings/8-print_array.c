@@ -2,40 +2,21 @@
 #include <stdio.h>
 
 /**
- * _strlen - returns the length of a given string
- * @s: string to check the length of
- * Return: returns the length of the string
+ * print_array -ifunction that print n elements of an array of integers
+ * followed by a new line.
+ * @a: an input array
+ * @n: an input integer
+ * Return: 0
  */
-int _strlen(char *s)
+void print_array(int *a, int n)
 {
-	int a;
+	int b = 0;
 
-	a = 0;
-	while (s[a] != '\0')
-		a++;
-	return (a);
-}
-
-/**
- * rev_string - will reverse string in place, without printing it
- * @s: string to reverse
- * Return: void
- */
-void rev_string(char *s)
-{
-	int a, length;
-
-	char b, c;
-
-	length = _strlen(s) - 1;
-	a = 0;
-
-	while (a < length)
+	for (; b < n; b++)
 	{
-		b = s[a];
-		c = s[length];
-		s[a++] = c;
-		s[length--] = b;
+		printf("%d", a[b]);
+		if (b < n - 1)
+			printf(", ");
 	}
+	putchar('\n');
 }
-
