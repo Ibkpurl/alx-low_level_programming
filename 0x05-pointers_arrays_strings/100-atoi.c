@@ -2,40 +2,34 @@
 #include <stdio.h>
 
 /**
- * _strlen - returns the length of a given string
- * @s: string to check the length of
- * Return: returns the length of the string
+ * _atoi - is a function that converts string to integer
+ * @s: An input string
+ * Return: integer from conversion
  */
-int _strlen(char *s)
+int _atoi(char *s)
 {
-	int a;
+	int tst = 1;
+	unsigned int total = 0;
+	char zero = 0;
 
-	a = 0;
-	while (s[a] != '\0')
-		a++;
-	return (a);
-}
-
-/**
- * rev_string - will reverse string in place, without printing it
- * @s: string to reverse
- * Return: void
- */
-void rev_string(char *s)
-{
-	int a, length;
-
-	char b, c;
-
-	length = _strlen(s) - 1;
-	a = 0;
-
-	while (a < length)
+	while (*s)
 	{
-		b = s[a];
-		c = s[length];
-		s[a++] = c;
-		s[length--] = b;
-	}
-}
+		if (*s == '-')
+			tst *= -1;
 
+		if (*s >= '0' && *s <= '9')
+		{
+			zero = 1;
+			total = total * 10 + *s - '0';
+		}
+
+		else if (zero)
+			break;
+		s++;
+	}
+
+	if (tst < 0)
+		total = (-total);
+
+	return (total);
+}
