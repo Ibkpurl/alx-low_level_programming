@@ -1,27 +1,34 @@
 #include "main.h"
 
 /**
-  * string_toupper - function that change all lowercase letters to uppercase
-  *
-  * @p: String to return
-  *
-  * Return: String
-  */
+ * cap_string - is a function that capitalizes all words of a string
+ * @str: char type pointer
+ * Return: pointer
+ */
+char *cap_string(char *str)
+{
+	int a;
+	int b;
+	char c[] = {44, 59, 46, 33, 63, 34, 40, 41, 123, 125, 32, 10, 9};
 
-	char *string_toupper(char *p)
+	a = 0;
+
+	while (str[a] != '\0')
 	{
-
-		int a;
-
-		for (a = 0; p[a] != '\0'; a++)
+		if (a == 0 && str[a] >= 97 && str[a] <= 122)
 		{
-
-			if (p[a] >= 97 && p[a] <= 122)
+			str[a] = str[a] - 32;
+		}
+		b = 0;
+		while (c[b] != '\0')
+		{
+			if (c[b] == str[a] && (str[a + 1] >= 97 && str[a + 1] <= 122))
 			{
-				p[a] = p[a] - 32;
+				str[a + 1] = str[a + 1] - 32;
 			}
-
+			b++;
+		}
+		a++;
 	}
-
-	return (p);
+	return (str);
 }
