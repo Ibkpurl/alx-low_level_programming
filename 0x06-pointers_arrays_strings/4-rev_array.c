@@ -1,21 +1,28 @@
 #include "main.h"
 
 /**
- * _strcat - is a function that concatenates two strings.
- * @dest: an input string
- * @src: an input string
- * Return: A pointer to the resulting string
+ * reverse_array - a function that reverses the 
+ * content of an array of integers
+ * @a: An array of integers
+ * @n: Number of elements to swap
+ * Return: empty.
  */
-char *_strcat(char *dest, char *src)
+void reverse_array(int *a, int n)
 {
-        char *temp = dest;
+	int *b, i, aux, k;
 
-        while (*dest)
-          dest++;
+	b = a;
 
-        while (*src)
-          *dest++ = *src++;
+	for (i = 1; i < n; i++)
+	{
+		b++;
+	}
 
-        *dest = '\0';
-        return (temp);
+	for (k = 0; k < i / 2; k++)
+	{
+		aux = a[k];
+		a[k] = *b;
+		*b = aux;
+		b--;
+	}
 }
