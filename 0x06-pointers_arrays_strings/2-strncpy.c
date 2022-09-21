@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _strncpy - is a function that copys the strings.
+ * _strncpy - is a function that copies the strings.
  * @dest: an input string
  * @src: an input string
  * @n: an input integer
@@ -9,24 +9,16 @@
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int srclength = 0, a = 0;
-	char *temp = dest, *start = src;
+	int i = 0;
 
-	while (*src)
+	for (; i < n && *(src + i); i++)
 	{
-		srclength++;
-		src++;
+		*(dest + i) = *(src + i);
 	}
+	for (; i < n; i++)
+	{
+	*(dest + i) = '\0';
+	}
+	return (dest);
 
-	srclength++;
-
-	if (n > srclength)
-		n = srclength;
-
-	src = start;
-
-	for (; a < n; a++)
-		*dest++ = *src++;
-
-	return (temp);
 }
