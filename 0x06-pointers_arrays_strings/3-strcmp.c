@@ -1,21 +1,25 @@
 #include "main.h"
 
 /**
- * _strcat - is a function that concatenates two strings.
- * @dest: an input string
- * @src: an input string
- * Return: A pointer to the resulting string
+ *_strcmp - is a function that compares two strings
+ * @s1: The function of strings
+ * @s2: The function of strcmp
+ * Return: Always 0.
  */
-char *_strcat(char *dest, char *src)
+int _strcmp(char *s1, char *s2)
 {
-        char *temp = dest;
+	while (((*s1 != '\0') && (*s2 != '\0')) && (*s1 == *s2))
+	{
+		s1++;
+		s2++;
+	}
 
-        while (*dest)
-          dest++;
-
-        while (*src)
-          *dest++ = *src++;
-
-        *dest = '\0';
-        return (temp);
+	if (*s1 == *s2)
+	{
+		return (0);
+	}
+	else
+	{
+		return (*s1 - *s2);
+	}
 }
