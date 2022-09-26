@@ -1,27 +1,26 @@
 #include "main.h"
 
 /**
-  * string_toupper - function that change all lowercase letters to uppercase
-  *
-  * @p: String to return
-  *
-  * Return: String
-  */
+ * rot13 - a function that encodes a string into rot13
+ * @s: string to encode
+ * Return: s
+ */
+char *rot13(char *s)
+{
+	int i, j;
+	char a[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char b[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	char *string_toupper(char *p)
+	for (i = 0; *(s + i); i++)
 	{
-
-		int a;
-
-		for (a = 0; p[a] != '\0'; a++)
+		for (j = 0; j < 52; j++)
 		{
-
-			if (p[a] >= 97 && p[a] <= 122)
+			if (a[j] == *(s + i))
 			{
-				p[a] = p[a] - 32;
+				*(s + i) = b[j];
+				break;
 			}
-
+		}
 	}
-
-	return (p);
+	return (s);
 }
