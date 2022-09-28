@@ -2,8 +2,8 @@
 
 /**
  * wildcmp - compares two strings and returns 1 if identical
- * @s1: string to be checked
- * @s2: pattern to be used
+ * @s1: input
+ * @s2: input param
  *
  * Return: 1 if identical, 0 otherwise
  */
