@@ -2,7 +2,7 @@
 int prime_checker(int n, int i);
 /**
  * is_prime_number - executes prime_checker
- * @n: input 
+ * @n: input
  * Return: Always 0 (Success)
  */
 int is_prime_number(int n)
