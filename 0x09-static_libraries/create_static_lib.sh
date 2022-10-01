@@ -1,4 +1,6 @@
 #!/bin/bash
+gcc -c *.c
+ar rc liball.a *o
 # Reset
 Color_Off='\033[0m'       # Text Reset
 
