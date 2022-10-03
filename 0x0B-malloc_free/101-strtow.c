@@ -1,50 +1,65 @@
-#include "main.h"
 #include <stdlib.h>
 
 /**
- * strtow - function that splits a string into words
- * @str: An input 
- * Return: NULL if str == NULL or str == ""
+ * ch_free_grid - a function that frees a 2 dimensional array
+ * @grid: multidimensional array of char.
+ * @height: height of the array.
+ *
+ * Return: no return
+ */
+void ch_free_grid(char **grid, unsigned int height)
+{
+	if (grid != NULL && height != 0)
+	{
+		for (; height > 0; height--)
+			free(grid[height]);
+		free(grid[height]);
+		free(grid);
+	}
+}
+
+/**
+ * strtow - a function that split a string into words.
+ * @str: string.
+ * Return: pointer of an array of integers
  */
 char **strtow(char *str)
 {
-	char **array;
-	int i = 0, j, m, k = 0, length = 0, count = 0;
+	char **args_out;
+	unsigned int c, height, i, j, a1;
 
 	if (str == NULL || *str == '\0')
 		return (NULL);
-	for (; str[i]; i++)
+	for (c = height = 0; str[c] != '\0'; c++)
+		if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
+			height++;
+	args_out = malloc((height + 1) * sizeof(char *));
+	if (args_out == NULL || height == 0)
 	{
-		if ((str[i] != ' ' || *str != '\t') &&
-				((str[i + 1] == ' ' || str[i + 1] == '\t') || str[i + 1] == '\n'))
-			count++;
+		free(args_out);
+		return (NULL);
 	}
-	if (count == 0)
-		return (NULL);
-	array = malloc(sizeof(char *) * (count + 1));
-	if (array == NULL)
-		return (NULL);
-	for (i = 0; str[i] != '\0' && k < count; i++)
+	for (i = a1 = 0; i < height; i++)
 	{
-		if (str[i] != ' ' || str[i] != '\t')
+		for (c = a1; str[c] != '\0'; c++)
 		{
-			length = 0;
-			j = i;
-			while ((str[j] != ' ' || str[j] != '\t') && str[j] != '\0')
-				j++, length++;
-			array[k] = malloc((length + 1) * sizeof(char));
-			if (array[k] == NULL)
+			if (str[c] == ' ')
+				a1++;
+			if (str[c] != ' ' && (str[c + 1] == ' ' || str[c + 1] == '\0'))
 			{
-				for (k = k - 1; k >= 0; k++)
-					free(array[k]);
-				free(array);
-				return (NULL);
+				args_out[i] = malloc((c - a1 + 2) * sizeof(char));
+				if (args_out[i] == NULL)
+				{
+					ch_free_grid(args_out, i);
+					return (NULL);
+				}
+				break;
 			}
-			for (m = 0; m < length; m++, i++)
-				array[k][m] = str[i];
-			array[k++][m] = '\0';
 		}
+		for (j = 0; a1 <= c; a1++, j++)
+			args_out[i][j] = str[a1];
+		args_out[i][j] = '\0';
 	}
-	array[k] = NULL;
-	return (array);
+	args_out[i] = NULL;
+	return (args_out);
 }
