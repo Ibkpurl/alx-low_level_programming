@@ -1,41 +1,49 @@
 #include "lists.h"
+
 /**
- * delete_nodeint_at_index - Function that deletes the node at index
- index of a listint_t linked list
- *
- * Description: deletes the node at index index of a listint_t linked list.
- *
- * @head: pointer to pointer of type listint_t
- * @index: unsigned int, index to remove
- *
- * Return: returns 1 for success and -1 for fail
+ * insert_nodeint_at_index - function that inserts node at given index
+ * @head: A pointer to listint_t structure
+ * @idx: The index of the list
+ * @n: An integer data for new node
+ * Return: The address to new node at specified index, or NULL if it failed
  */
-int delete_nodeint_at_index(listint_t **head, unsigned int index)
+listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
 {
-	unsigned int count;
-	listint_t *tmp, *prev = *head;
+	unsigned int i = 1;
+	listint_t *new, *tmp;
 
-	if (prev == NULL || (prev->next == NULL && index != 0))
-		return (-1);
+	if (head == NULL)
+		return (NULL);
 
-	if (index != 0)
+	new = malloc(sizeof(listint_t));
+	if (new == NULL)
+		return (NULL);
+
+	if (*head == NULL)
 	{
-		for (count = 0; (count < (index - 1)) && (prev != NULL); count++)
-		{
-			prev = prev->next;
-		}
-	}
-	tmp = prev->next;
-	if (index != 0)
-	{
-		prev->next = tmp->next;
-		free(tmp);
-	}
-	else
-	{
-		free(prev);
-		*head = tmp;
+		*head = new;
+		new->next = NULL;
+		new->n = n;
+		return (new);
 	}
 
-	return (1);
+	if (idx == 0)
+	{
+		new->next = *head;
+		new->n = n;
+		*head = new;
+		return (new);
+	}
+
+	tmp = *head;
+	while (i < idx)
+	{
+		tmp = tmp->next;
+		i++;
+	}
+
+	new->n = n;
+	new->next = tmp->next;
+	tmp->next = new;
+	return (new);
 }
