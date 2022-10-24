@@ -1,49 +1,45 @@
 #include "lists.h"
-
 /**
- * insert_nodeint_at_index - A function that inserts node at given index
- * @head: A pointer to listint_t structure
- * @idx: The index of the list
- * @n: An integer data for new node
- * Return: The address to new node at specified index, or NULL if it failed
+ * delete_nodeint_at_index - function that deletes the node at index
+ * of a linked list.
+ * @head: head of a list.
+ * @index: index of the deleted node
+ *
+ * Return: 1 if it succeeded, -1 if it failed.
  */
-listint_t *insert_nodeint_at_index(listint_t **head, unsigned int idx, int n)
+int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
-	unsigned int i = 1;
-	listint_t *new_node, *temp;
+	unsigned int a;
+	listint_t *prev;
+	listint_t *next;
 
-	if (head == NULL)
-		return (NULL);
+	prev = *head;
 
-	new_node = malloc(sizeof(listint_t));
-	if (new_node == NULL)
-		return (NULL);
-
-	if (*head == NULL)
+	if (index != 0)
 	{
-		*head = new_node;
-		new_node->next = NULL;
-		new_node->n = n;
-		return (new_node);
+		for (a = 0; a < index - 1 && prev != NULL; a++)
+		{
+			prev = prev->next;
+		}
 	}
 
-	if (idx == 0)
+	if (prev == NULL || (prev->next == NULL && index != 0))
 	{
-		new_node->next = *head;
-		new_node->n = n;
-		*head = new_node;
-		return (new_node);
+		return (-1);
 	}
 
-	temp = *head;
-	while (i < idx)
+	next = prev->next;
+
+	if (index != 0)
 	{
-		temp = temp->next;
-		i++;
+		prev->next = next->next;
+		free(next);
+	}
+	else
+	{
+		free(prev);
+		*head = next;
 	}
 
-	new_node->n = n;
-	new_node->next = temp->next;
-	temp->next = new_node;
-	return (new_node);
+	return (1);
 }
