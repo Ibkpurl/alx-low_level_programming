@@ -2,8 +2,7 @@
 #include <stddef.h>
 
 /**
- * read_textfile - function that read a text file and print 
- it to the standard output
+ * read_textfile - read a text file and print it to the standard output
  * @filename: name of the file
  * @letters:  number of letters to be printed
  * Return: number of letters read and printed
